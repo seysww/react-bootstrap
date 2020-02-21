@@ -1,5 +1,5 @@
 import React from 'react';
-import { MainRoutes } from "./routing";
+import { MainRoutes } from "./routing/routing";
 import {
   HashRouter as Router
 } from "react-router-dom";

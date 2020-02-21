@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  HashRouter as Router,
   Switch,
   Route,
   Redirect
@@ -8,21 +7,24 @@ import {
 
 import {
   UsersRoutes,
-  ProductRoutes
-} from "./features"
+  ProductRoutes,
+  AuthLogin
+} from "../features";
+
+import {
+  PrivateRoute
+} from "./private-routing";
 
 function MainRoutes(props) {
   return (
     <Switch>
-      <Route path="/login">
-        <h1>Login</h1>
-      </Route>
-      <Route path="/products">
+      <Route path="/login" component={AuthLogin}/>
+      <PrivateRoute path="/products">
         <ProductRoutes />
-      </Route>
-      <Route path="/users">
+      </PrivateRoute>
+      <PrivateRoute path="/users">
         <UsersRoutes />
-      </Route>
+      </PrivateRoute>
       <Redirect
         to={{
           pathname: "/login"
